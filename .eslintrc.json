@@ -1,0 +1,22 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:prettier/recommended"    // 追加: Prettier の推奨設定
+    ],
+    "plugins": ["react", "@typescript-eslint", "prettier"],   // 追加: Prettier のプラグイン
+    "rules": {
+      "prettier/prettier": "error",    // 追加: Prettier のルールを ESLint エラーとして扱う
+      "react/react-in-jsx-scope": "off"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
+  }
+
+  
