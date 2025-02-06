@@ -4,7 +4,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-const LIFF_ID = "YOUR_LIFF_ID"; // LINE Developersで発行したLIFF IDを設定
+const LIFF_ID = "2006857062-gVZvRdqj"; // LINE Developersで発行したLIFF IDを設定
 
 function App() {
   const [count, setCount] = useState(0);
