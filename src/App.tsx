@@ -1,31 +1,31 @@
-import { useState } from "react";
-// import liff from "@line/liff"; // LIFF SDKをインポート
+import { useState, useEffect } from "react";
+import liff from "@line/liff"; // LIFF SDKをインポート
 import "./App.css";
 
-// const LIFF_ID = "2006871199-3bBRzZke"; // LINE Developersで発行したLIFF IDを設定
+const LIFF_ID = "2006871199-3bBRzZke"; // LINE Developersで発行したLIFF IDを設定
 
 function App() {
   const [count, setCount] = useState(0);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [userName, setUserName] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState("");
 
-  // useEffect(() => {
-  //   // LIFFの初期化
-  //   liff.init({ liffId: LIFF_ID })
-  //     .then(() => {
-  //       console.log("LIFF initialized");
-  //       if (!liff.isLoggedIn()) {
-  //         liff.login(); // 未ログインならLINEログインを実行
-  //       } else {
-  //         setIsLoggedIn(true);
-  //         // ユーザー情報を取得
-  //         liff.getProfile().then(profile => {
-  //           setUserName(profile.displayName);
-  //         });
-  //       }
-  //     })
-  //     .catch(err => console.error("LIFF Initialization failed", err));
-  // }, []);
+  useEffect(() => {
+    // LIFFの初期化
+    liff.init({ liffId: LIFF_ID })
+      .then(() => {
+        console.log("LIFF initialized");
+        if (!liff.isLoggedIn()) {
+          liff.login(); // 未ログインならLINEログインを実行
+        } else {
+          setIsLoggedIn(true);
+          // ユーザー情報を取得
+          liff.getProfile().then(profile => {
+            setUserName(profile.displayName);
+          });
+        }
+      })
+      .catch(err => console.error("LIFF Initialization failed", err));
+  }, []);
 
   return (
     <>
@@ -43,10 +43,10 @@ function App() {
       </p>
 
       {/* LIFFの情報表示 */}
-      {/* <div>
+      <div>
         <h2>LIFF Status</h2>
         <p>{isLoggedIn ? `Logged in as ${userName}` : "Not logged in"}</p>
-      </div> */}
+      </div>
     </>
   );
 }
