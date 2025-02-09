@@ -5,7 +5,6 @@ import { MessageBubble } from "./elements/MessageBubble";
 
 export function MessageLayout(senderId:{senderId:string}) {
     const { messages } = useMessages();
-    console.log(messages);
     return (
         <Box
           sx={{
@@ -22,6 +21,7 @@ export function MessageLayout(senderId:{senderId:string}) {
                 senderId={message.senderId}
                 messageSenderId={senderId.senderId}
                 text={message.text}
+                timestamp={message.timestamp}
               />
             ))}
           <Footer senderId={senderId.senderId}/>

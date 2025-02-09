@@ -5,6 +5,7 @@ interface MessageType {
   id: number;
   senderId: string;
   text: string;
+  timestamp: string; // 追加: メッセージの送信時間
 }
 
 // コンテキストの型
@@ -13,7 +14,7 @@ interface MessageContextType {
   addMessage: (senderId: string, text: string) => void;
 }
 
-// コンテキスト作成（useContext の使用は別ファイルで）
+// コンテキスト作成
 export const MessageContext = createContext<MessageContextType | undefined>(undefined);
 
 // プロバイダー
@@ -21,7 +22,14 @@ export function MessageProvider({ children }: { children: ReactNode }) {
   const [messages, setMessages] = useState<MessageType[]>([]);
 
   const addMessage = (senderId: string, text: string) => {
-    setMessages((prev) => [...prev, { id: prev.length + 1, senderId, text }]);
+    const newMessage: MessageType = {
+      id: messages.length + 1,
+      senderId,
+      text,
+      timestamp: new Date().toISOString(), // 現在時刻を ISO 形式で保存
+    };
+
+    setMessages((prev) => [...prev, newMessage]);
   };
 
   return (
