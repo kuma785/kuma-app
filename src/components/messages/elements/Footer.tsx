@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { Box, TextField, IconButton } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import { useMessages } from "../../../hooks/useMessages";
 
-export function Footer({ onSend }: { onSend: (message: string) => void }) {
+export function Footer(senderId: { senderId: string }) {
   const [message, setMessage] = useState("");
+  const { addMessage } = useMessages();
 
   const handleSend = () => {
     if (message.trim()) {
-      onSend(message);
+      console.log(message);
+      addMessage(senderId.senderId, message);
       setMessage("");
-    }
+  }
   };
 
   return (

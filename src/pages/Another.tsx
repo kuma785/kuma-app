@@ -1,10 +1,11 @@
 import { MessageLayout } from '../components/messages/MessageLayout';
 
-export function Message() {
-    const senderId = "1";
+export function Another() {
+    const senderId = "2";
     return (
       <>
         <MessageLayout senderId={senderId} />
+        <h1>Another</h1>
       </>
     );
   }

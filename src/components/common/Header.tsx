@@ -19,6 +19,9 @@ export function Header() {
           <Button color="inherit" component={Link} to="/message">
             Message
           </Button>
+          <Button color="inherit" component={Link} to="/another">
+            Another
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>
